@@ -1,24 +1,29 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-class GraphColumn extends Component {
+class List extends Component {
 
-    render() {
-        let percentHeight = (this.props.value / this.props.max * 100).toFixed(2) + "%";
-        if (this.props.value === 0) {
-            percentHeight = "auto";
-        }
+	render() {
 
-        return (
-            <div className="GraphColumn">
-                <div className="GraphColumn__bar-container">
-                    <div className="GraphColumn__bar"
-                         style={{height: percentHeight, backgroundColor: this.props.color}}
-                    >{this.props.value}</div>
-                </div>
-                <div className="GraphColumn__label">{this.props.label}</div>
-            </div>
-        );
-    }
+		return(
+			<article>
+				<section>
+					<div className="PostItem">
+						<img src={this.props.post.thumbnail} alt={this.props.post.thumbnail}/>
+						<h4 className="PostTitle">{this.props.post.title}</h4>
+					</div>
+				</section>
+			</article>
+		);
+	}
+
+
 }
 
-export default GraphColumn;
+function mapStateToProps(state) {
+	return {
+		posts: state.posts
+	}
+}
+
+export default connect(mapStateToProps)(List);
