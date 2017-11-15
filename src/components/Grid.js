@@ -10,7 +10,7 @@ class Grid extends Component {
 
 			<div>
 				<div className="GridPostItem">
-					<img src={this.props.post.thumbnail} alt={this.props.post.thumbnail}/>
+					<img className = "" img src={this.props.post.data.thumbnail} />
 				</div>
 			</div>
 
